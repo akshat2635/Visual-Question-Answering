@@ -5,12 +5,18 @@ from torchvision import transforms
 from PIL import Image
 import pickle
 import os
+import gdown
 from VQA_model import *  
 
 # Set Constants
 DATA_FOLDER = "data"
 IMAGE_SIZE = (224, 224)
 PREVIEW_SIZE = (300, 300)
+
+
+file_id = "1Ec5tXFrPTNYD5GAn25ASj6nji867FPQA"
+model_url = f"https://drive.google.com/uc?id={file_id}"
+model_path = "data/best_model.pth"
 
 # Load Answer Vocabulary
 @st.cache_resource
@@ -24,6 +30,11 @@ idx2answer = vocab["idx2answer"]
 # Load Model
 @st.cache_resource
 def load_model():
+    if not os.path.exists(model_path):
+        gdown.download(model_url, model_path, quiet=False, fuzzy=True)
+        print("Model Downloaded Successfully!")
+    else:
+        print("Model already exists, skipping download.")
     model = torch.load(os.path.join(DATA_FOLDER, "best_model.pth"), map_location="cpu",weights_only=False)
     model.eval()
     return model
