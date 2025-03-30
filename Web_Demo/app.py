@@ -9,14 +9,14 @@ import gdown
 from VQA_model import *  
 
 # Set Constants
-DATA_FOLDER = "data"
+DATA_FOLDER = "Web_Demo/data"
 IMAGE_SIZE = (224, 224)
 PREVIEW_SIZE = (300, 300)
 
 
 file_id = "1Ec5tXFrPTNYD5GAn25ASj6nji867FPQA"
 model_url = f"https://drive.google.com/uc?id={file_id}"
-model_path = "data/best_model.pth"
+model_path = "Web_Demo/data/best_model.pth"
 
 # Load Answer Vocabulary
 @st.cache_resource
