@@ -8,6 +8,7 @@ import os
 import gdown
 from VQA_model import *  
 
+os.environ["STREAMLIT_SERVER_FILE_WATCHER_TYPE"] = "none"
 # Set Constants
 DATA_FOLDER = "Web_Demo/data"
 IMAGE_SIZE = (224, 224)
